@@ -49,6 +49,9 @@ REF_VCF = f"{REF_DIR}/PAN.ALL.split_norm_af.1kg_30x.hg38.vcf.gz"
 INPUT_SUMSTATS = "FULL_AAC_GWAS_PD.regenie.gz"
 OUTPUT_PREFIX = "AAC_harmonized"
 LEAD_VARIANTS_OUT = f"{OUTPUT_PREFIX}.lead_variants.tsv"
+#for the plot
+plot="plot.png"
+title="Regenie GWAS"
 
 #Run parameters
 THREADS = 4
@@ -227,3 +230,23 @@ lead_variants.to_csv(LEAD_VARIANTS_OUT, index=False, sep="\t")
 
 print(f"Done. Harmonized sumstats: {OUTPUT_PREFIX}")
 print(f"Lead variants ({len(lead_variants)}): {LEAD_VARIANTS_OUT}")
+
+ss.plot_mqq(
+    mode='mqq',
+    #cut=14,
+    #skip=5,
+    title=title, 
+    sig_level=1e-6,
+    anno_sig_level=1e-6,
+    anno="GENENAME",
+    build="38",
+    sig_line=True,
+    additional_line=[5e-8],
+    additional_line_color=['black'],
+    font_family="DejaVu Sans",
+    fontsize=11,
+    anno_fontsize=12,
+    colors=["#000000","#ABABAB"],
+    save=plot, save_kwargs={"dpi":300, "facecolor":"white"}
+)
+
