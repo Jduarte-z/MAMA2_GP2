@@ -1,4 +1,4 @@
-# MAMA2_GP2
+# MAMA2_GP2    
 
 ## Step 1 - run Regenie in each genotools population 
 
@@ -50,7 +50,7 @@ done
 Important note: for MR-MEGA, the more "granular" you have your data the better. Example, if you have EUR sumstas from GP2, 23adnME, UKB, etc. it is better to input them individually rather than input the meta-analysis between. the EURs.
 
 In their paper they say that the max amount of PCs available is equal or less than the number of studies minus two. 
-Aka, if we run the thing for 9 pops (the non-EUR ones), the max number of PCs is 7. 
+Aka, if we run the thing for 9 pops (the non-EUR ones, although we include AJ and FIN hehe, for the sake of testing the pipeline), the max number of PCs is 7. 
 
 In reality, based on previous experiences with the tool, this rule of thumb is a bit different when you have a lower number of studies. For example, when I run it with 4 studies, the maximum number of PCs to include for the tool to run is actually 1. Since no PCs at all is just basically a fixed effects meta-analysis. I emailed the authors of the tool and they confirmed as well that the minimum amount of studies to run MR-MEGA is 4. Otherwise just stick with fixed and or random effects models. 
 
