@@ -51,7 +51,7 @@ OUTPUT_PREFIX = "mama_gp2Only_non-eur"
 LEAD_VARIANTS_OUT = f"{OUTPUT_PREFIX}.lead_variants.tsv"
 
 plot="mama_gp2Only_non-eur.png"
-title="hap map 3 vars MAMA GP2 only non-EUR"
+title="MR-MEGA GP2 only non-EUR"
 
 #Run parameters
 THREADS = 4
