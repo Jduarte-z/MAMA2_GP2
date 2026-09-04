@@ -33,7 +33,7 @@ gl.download_ref('1kg_pan_hg38', directory='./')
 gl.download_ref('ucsc_genome_hg38', directory='./')
 
 """
-REF_DIR = "/config/workspace/ws_files/MAMA_2/gwaslab_referenceFiles"
+REF_DIR = "/home/jupyter/workspace/ws_files/MAMA_2/gwaslab_referenceFiles"
 
 
 REF_FASTA = f"{REF_DIR}/hg38.fa"
@@ -50,8 +50,8 @@ INPUT_SUMSTATS = "gwama_random.out"
 OUTPUT_PREFIX = "gwmam_random_gp2Only_non-eur"
 LEAD_VARIANTS_OUT = f"{OUTPUT_PREFIX}.lead_variants.tsv"
 
-plot="mama_gp2Only_non-eur.png"
-title="hap map 3 vars MAMA GP2 only non-EUR"
+plot="manhattan.png"
+title="gp2 non-eur random effects meta"
 
 #Run parameters
 THREADS = 4
@@ -76,6 +76,7 @@ COLUMN_MAP = {
     "direction": "effects",
     "i2": "i2",
     "z": "z",
+    "mlog10p": "-log10_p-value"
 }
 EXTRA_COLS = ["OR_se", "q_statistic", "q_p-value"]
 #EA-referenced frequency columns gwaslab does not know about and will not flip
