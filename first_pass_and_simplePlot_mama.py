@@ -73,9 +73,12 @@ COLUMN_MAP = {
     "beta": "beta_0",
     "se": "se_0",
     "p": "P-value_association",
-    "chisq": "chisq_association"
+    "chisq": "chisq_association",
+    "direction": "Effects",
+    "phet": "P-value_ancestry_het"
+    
 }
-EXTRA_COLS = ["Effects", "Ncohort", "chisq_ancestry_het","ndf_ancestry_het", "P-value_ancestry_het", "chisq_residual_het", "ndf_residual_het", "P-value_residual_het", "lnBF"]
+EXTRA_COLS = ["Ncohort", "chisq_ancestry_het","ndf_ancestry_het", "chisq_residual_het", "ndf_residual_het", "P-value_residual_het", "lnBF"]
 #EA-referenced frequency columns gwaslab does not know about and will not flip
 #EA_FREQ_COLS = ["A1FREQ_CASES", "A1FREQ_CONTROLS"]
 #Columns to carry into the output file; the gwaslab format drops anything it doesn't recognize
