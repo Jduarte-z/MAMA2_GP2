@@ -172,12 +172,12 @@ ss = gl.Sumstats(
 
 
 # Strict data cleaning
-
+ss.fix_id(fixchrpos=True)
 ss.fix_chr(remove=True)
 ss.fix_pos(remove=True)
 ss.fix_allele(remove=True)
-ss.fix_id(fixchrpos=False, fixid=True, fixsep=False,
-          forcefixid=True, overwrite=True)
+# ss.fix_id(fixchrpos=False, fixid=True, fixsep=False,
+#           forcefixid=True, overwrite=True)
 ss.normalize_allele(threads=THREADS)
 ss.sort_coordinate()
 
