@@ -2,10 +2,10 @@
 
 # GWAS summary statistics harmonization with gwaslab.
 # Designed and tested on gwaslab v4.1.6.
-# Edit the CONFIG section below.
 
 import os
 import sys
+import argparse
 import gwaslab as gl
 
 # CONFIG
@@ -35,23 +35,12 @@ gl.download_ref('ucsc_genome_hg38', directory='./')
 """
 REF_DIR = "/config/workspace/ws_files/MAMA_2/gwaslab_referenceFiles"
 
-
 REF_FASTA = f"{REF_DIR}/hg38.fa"
-
 
 #Change accordignly to the population in question, the only options available are
 #AMR, EUR, AFR, EAS and SAS. From the 1KGP, so pick the closest one,
 #at the end it is just for infering the strand of palindromics and indels
 REF_VCF = f"{REF_DIR}/PAN.ALL.split_norm_af.1kg_30x.hg38.vcf.gz"
-
-#Input / output
-#CHANGE ACCORDIGNLY
-INPUT_SUMSTATS = "FULL_AAC_GWAS_PD.regenie.gz"
-OUTPUT_PREFIX = "AAC_harmonized"
-LEAD_VARIANTS_OUT = f"{OUTPUT_PREFIX}.lead_variants.tsv"
-#for the plot
-plot="plot.png"
-title="Regenie GWAS"
 
 #Run parameters
 THREADS = 4
@@ -100,6 +89,133 @@ ANNO_SOURCE = "ensembl"
 
 #Optional: drop BETA/SE from the final output
 DROP_BETA_SE = False
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Harmonize GWAS summary statistics using gwaslab."
+    )
+
+    parser.add_argument(
+        "--input",
+        required=True,
+        help="Input GWAS summary statistics file."
+    )
+    parser.add_argument(
+        "--output-prefix",
+        required=True,
+        help="Prefix/path for the harmonized output."
+    )
+
+    parser.add_argument(
+        "--ref-dir",
+        default=REF_DIR,
+        help=f"gwaslab reference directory. Default: {REF_DIR}"
+    )
+    parser.add_argument(
+        "--ref-fasta",
+        default=None,
+        help="Reference FASTA. Default: <ref-dir>/hg38.fa"
+    )
+    parser.add_argument(
+        "--ref-vcf",
+        default=None,
+        help="Reference VCF used for strand inference. Default: PAN 1KGP hg38 reference."
+    )
+
+    parser.add_argument(
+        "--threads",
+        type=int,
+        default=THREADS,
+        help=f"Number of threads. Default: {THREADS}"
+    )
+
+    parser.add_argument(
+        "--plot",
+        default="plot.png",
+        help="Output path for the Manhattan/QQ plot. Default: plot.png"
+    )
+    parser.add_argument(
+        "--title",
+        default="Regenie GWAS",
+        help="Plot title. Default: Regenie GWAS"
+    )
+    parser.add_argument(
+        "--lead-variants-out",
+        default=None,
+        help="Output path for lead variants. Default: <output-prefix>.lead_variants.tsv"
+    )
+
+    parser.add_argument(
+        "--window-size-kb",
+        type=int,
+        default=WINDOW_SIZE_KB,
+        help=f"Lead variant window size in kb. Default: {WINDOW_SIZE_KB}"
+    )
+    parser.add_argument(
+        "--sig-level",
+        type=float,
+        default=SIG_LEVEL,
+        help=f"Lead variant significance threshold. Default: {SIG_LEVEL}"
+    )
+
+    parser.add_argument(
+        "--maf-threshold",
+        type=float,
+        default=MAF_THRESHOLD,
+        help=f"MAF threshold for strand inference. Default: {MAF_THRESHOLD}"
+    )
+    parser.add_argument(
+        "--daf-tolerance",
+        type=float,
+        default=DAF_TOLERANCE,
+        help=f"DAF tolerance for strand inference. Default: {DAF_TOLERANCE}"
+    )
+
+    parser.add_argument(
+        "--drop-beta-se",
+        action="store_true",
+        default=DROP_BETA_SE,
+        help="Drop BETA and SE from the final output."
+    )
+    parser.add_argument(
+        "--no-annotate-leads",
+        action="store_true",
+        help="Do not annotate lead variants."
+    )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Disable verbose gwaslab output."
+    )
+
+    return parser.parse_args()
+
+
+args = parse_args()
+
+REF_DIR = args.ref_dir
+REF_FASTA = args.ref_fasta or os.path.join(REF_DIR, "hg38.fa")
+REF_VCF = args.ref_vcf or os.path.join(
+    REF_DIR,
+    "PAN.ALL.split_norm_af.1kg_30x.hg38.vcf.gz"
+)
+
+INPUT_SUMSTATS = args.input
+OUTPUT_PREFIX = args.output_prefix
+LEAD_VARIANTS_OUT = args.lead_variants_out or f"{OUTPUT_PREFIX}.lead_variants.tsv"
+
+plot = args.plot
+title = args.title
+
+THREADS = args.threads
+WINDOW_SIZE_KB = args.window_size_kb
+SIG_LEVEL = args.sig_level
+MAF_THRESHOLD = args.maf_threshold
+DAF_TOLERANCE = args.daf_tolerance
+DROP_BETA_SE = args.drop_beta_se
+ANNOTATE_LEADS = not args.no_annotate_leads
+VERBOSE = not args.quiet
 
 
 # END CONFIG — no edits needed below
@@ -235,7 +351,7 @@ ss.plot_mqq(
     mode='mqq',
     #cut=14,
     #skip=5,
-    title=title, 
+    title=title,
     sig_level=1e-6,
     anno_sig_level=1e-6,
     anno="GENENAME",
@@ -249,4 +365,3 @@ ss.plot_mqq(
     colors=["#000000","#ABABAB"],
     save=plot, save_kwargs={"dpi":300, "facecolor":"white"}
 )
-
