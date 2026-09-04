@@ -21,26 +21,26 @@ COLORS = ["#000000", "#ABABAB"]
 # Input GWAS files
 # -------------------------
 
-GWAS_TOP = "/path/to/first_gwas.gwaslab.tsv.gz"
-GWAS_BOTTOM = "/path/to/second_gwas.gwaslab.tsv.gz"
+GWAS_TOP = "/home/jupyter/workspace/ws_files/MAMA_2/mama_gp2_non-eur_only/full_mr-mega/mama_gp2Only_non-eur.gwaslab.tsv.gz"
+GWAS_BOTTOM = "/home/jupyter/workspace/ws_files/MAMA_2/mama_gp2_non-eur_only/full_random-effects/gwmam_random_gp2Only_non-eur.gwaslab.tsv.gz"
 
 
 # -------------------------
 # Novel loci files
 # -------------------------
 
-NOVEL_TOP = "/path/to/first_gwas_novel_loci.tsv"
-NOVEL_BOTTOM = "/path/to/second_gwas_novel_loci.tsv"
+NOVEL_TOP = "../full_mr-mega/out_file_novel"
+NOVEL_BOTTOM = "../full_random-effects/out_file_novel"
 
 
 # -------------------------
 # Plot labels
 # -------------------------
 
-TOP_LABEL = "Random effects"
-BOTTOM_LABEL = "Fixed effects"
+TOP_LABEL = "MR-MEGA"
+BOTTOM_LABEL = "Random effects"
 
-PLOT_TITLE = "SAIGE Phase1 & Phase2 meta-analysis"
+PLOT_TITLE = "Only GP2 non-EUR POPs"
 
 
 # -------------------------
