@@ -31,11 +31,17 @@ Both the script and the hap map 3 vars are attached to the repository:
 
 ```
 for i in AAC AFR AJ EAS SAS; do
-    python subset_sumstats_by_snp_polars.py --sumstats /config/workspace/ws_files/MAMA_2/jf_release12/*/output/Regenie_GWAS/${i}_R12_imputed/${i}_harmonized.gwaslab.tsv.gz  --variants hpm3snplist.bed --out ${i}_R12_imputed_hpm3snplist.tsv
+    python subset_sumstats_by_snp_polars.py \
+        --sumstats /config/workspace/ws_files/MAMA_2/jf_release12/*/output/Regenie_GWAS/${i}_R12_imputed/${i}_harmonized.gwaslab.tsv.gz \
+        --variants hpm3snplist.bed \
+        --out ${i}_R12_imputed_hpm3snplist.tsv
 done
 
 for i in AMR CAS FIN MDE; do
-    python subset_sumstats_by_snp_polars.py --sumstats /config/workspace/ws_files/MAMA_2/Release12_PR/output/Regenie_GWAS/${i}_R12_imputed/${i}_harmonized.gwaslab.tsv.gz  --variants hpm3snplist.bed --out ${i}_R12_imputed_hpm3snplist.tsv
+    python subset_sumstats_by_snp_polars.py \
+        --sumstats /config/workspace/ws_files/MAMA_2/Release12_PR/output/Regenie_GWAS/${i}_R12_imputed/${i}_harmonized.gwaslab.tsv.gz  \
+        --variants hpm3snplist.bed \
+        --out ${i}_R12_imputed_hpm3snplist.tsv
 done
 ```
 
