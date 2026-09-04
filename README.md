@@ -41,7 +41,7 @@ done
 
 ## Step 3 - run the first round of MR-MEGA with the max amount of PCs available 
 
-Important note: for MR-MEGA, the more "granular" you have your data the better. Example, if you have EUR sumstas from GP2, 23adnME, UKB, etc. it is better to input them individually. 
+Important note: for MR-MEGA, the more "granular" you have your data the better. Example, if you have EUR sumstas from GP2, 23adnME, UKB, etc. it is better to input them individually rather than input the meta-analysis between. the EURs.
 
 In their paper they say that the max amount of PCs available is equal or less than the number of studies minus two. 
 Aka, if we run the thing for 9 pops (the non-EUR ones), the max number of PCs is 7. 
