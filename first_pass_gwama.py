@@ -76,7 +76,7 @@ COLUMN_MAP = {
     "direction": "effects",
     "i2": "i2",
     "z": "z",
-    "mlog10p": "-log10_p-value"
+    "mlog10p": "_-log10_p-value"
 }
 EXTRA_COLS = ["OR_se", "q_statistic", "q_p-value"]
 #EA-referenced frequency columns gwaslab does not know about and will not flip
