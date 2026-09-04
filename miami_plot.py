@@ -22,7 +22,7 @@ COLORS = ["#000000", "#ABABAB"]
 # -------------------------
 
 GWAS_TOP = "/home/jupyter/workspace/ws_files/MAMA_2/mama_gp2_non-eur_only/full_mr-mega/mama_gp2Only_non-eur.gwaslab.tsv.gz"
-GWAS_BOTTOM = "/home/jupyter/workspace/ws_files/MAMA_2/mama_gp2_non-eur_only/full_random-effects/gwmam_random_gp2Only_non-eur.gwaslab.tsv.gz"
+GWAS_BOTTOM = "/home/jupyter/workspace/ws_files/MAMA_2/mama_gp2_non-eur_only/full_random-effects/download/gwama_random_eaf0.01.tsv.gz"
 
 
 # -------------------------
@@ -165,6 +165,7 @@ fig, log = gl.plot_miami2(
     gl_top,
     gl_bottom,
 
+    #skip=4,
     id1="SNPID",
     id2="SNPID",
 
@@ -187,14 +188,14 @@ fig, log = gl.plot_miami2(
 
     # Fonts
     font_family="DejaVu Sans",
-    fontsize=8 * SCALE,
+    fontsize=7 * SCALE,
 
     # Annotation
     anno1="GENENAME",
     anno2="GENENAME",
 
-    anno_style="right",
-    anno_fontsize=10 * SCALE,
+    anno_style="expand",
+    anno_fontsize=7 * SCALE,
 
     # Colors
     colors=COLORS,
@@ -206,7 +207,7 @@ fig, log = gl.plot_miami2(
     highlight_color1="#E70B0B",
     highlight_color2="#E70B0B",
 
-    repel_force=0.1,
+    repel_force=0.03,
 
     # Axes
     xtight=False,
@@ -236,13 +237,13 @@ ax_top, ax_bottom = fig.axes
 ymin_t, ymax_t = ax_top.get_ylim()
 ax_top.set_ylim(
     ymin_t,
-    ymax_t * 1.5
+    ymax_t * 2
 )
 
 ymin_b, ymax_b = ax_bottom.get_ylim()
 ax_bottom.set_ylim(
     ymin_b,
-    ymax_b * 1.25
+    ymax_b * 2
 )
 
 
