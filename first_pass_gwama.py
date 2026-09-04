@@ -63,7 +63,7 @@ VERBOSE = True
 
 #Input column names
 COLUMN_MAP = {
-    "snpid": "MarkerName",
+    "snpid": "rs_number",
     "ea": "reference_allele",
     "eaf": "eaf",
     "nea": "other_allele",
