@@ -33,7 +33,7 @@ gl.download_ref('1kg_pan_hg38', directory='./')
 gl.download_ref('ucsc_genome_hg38', directory='./')
 
 """
-REF_DIR = "/config/workspace/ws_files/MAMA_2/gwaslab_referenceFiles"
+REF_DIR = "/home/jupyter/workspace/ws_files/MAMA_2/gwaslab_referenceFiles"
 
 
 REF_FASTA = f"{REF_DIR}/hg38.fa"
