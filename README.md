@@ -150,5 +150,5 @@ And to find the potential "novel loci" use the same script as for MR-MEGA
 
 ## Step 7 - generate the miami plot with the novel loci included
 
-For this the script doesn't have argparse (my bad), but is relatively easy to hard code the configurations for it (miami_plot.py). 
+For this the script doesn't have argparse (my bad, haven't done that yet), but is relatively easy to hard code the configurations for it (miami_plot.py). 
 
