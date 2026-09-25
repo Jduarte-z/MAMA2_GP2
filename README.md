@@ -1,5 +1,7 @@
 # MAMA2_GP2    
 
+note: the genome build is hg38, unless a different build is specified. 
+
 ## Step 1 - run Regenie in each genotools population 
 
 Use the notebook that is attached to the repository (Regenie_GWAS.ipynb), just change the hardcoded configurations at the top cell. 
